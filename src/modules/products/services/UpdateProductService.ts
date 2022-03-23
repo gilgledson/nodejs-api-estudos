@@ -23,7 +23,7 @@ class UpdateProductService {
       throw new AppError(`Product not found`);
     }
     const productExists = await productRepository.findByName(product.name);
-    if (productExists && name !== product.name) {
+    if (productExists && productExists.id != id) {
       throw new AppError(`Product ${name} already exists`, 422);
     }
     product.quantity = quantity;
